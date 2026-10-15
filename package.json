@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node --test tests/",
     "start": "python3 -m http.server 8000",
-    "test:e2e": "node e2e/ui-check.js"
+    "test:e2e": "node e2e/ui-check.js && node e2e/features-check.js"
   },
   "license": "MIT"
 }

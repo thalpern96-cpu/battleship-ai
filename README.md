@@ -14,6 +14,14 @@ The classic game of Battleship, played in the browser against a computer opponen
    The AI fires back after each of your shots.
 4. The first side to sink all 5 enemy ships (Carrier 5, Battleship 4, Cruiser 3, Submarine 3, Destroyer 2) wins.
 
+## Extras
+
+- **Themes:** pick Classic, Pirate, Space (asteroids and starships) or Submarine Sonar. Each has its own colours, board names and ship names. Your choice is remembered.
+- **AI personalities:** each difficulty has its own commentator. Easy is *Ensign Pip* (a nervous rookie), Normal is *Captain Brine* (a sporting sea captain) and Hard is *Admiral Vex* (a smug admiral).
+- **Sound and animation:** a splash for a miss, an explosion and screen shake for a hit, and a sinking animation when a ship goes down. Sounds are generated in the browser (no audio files). Use **Sound on/off** to mute. Animations are reduced if your device asks for reduced motion.
+- **Movable fleet:** once per game, during the battle, click **Move a ship**, pick one of your ships that hasn't been hit, then click its new spot (press **R** to rotate, **Esc** to cancel). Moving uses up your turn, and the new spot can't include a square the AI has already fired at.
+- **End-of-game stats:** shots, hits, accuracy, longest hit streak, ships sunk, the turn each ship sank, and a heat map of where the AI fired (or where you fired).
+
 ### AI difficulty
 
 | Level  | Strategy | Avg. shots to sink a fleet* |
@@ -31,6 +39,10 @@ index.html        page markup
 css/style.css     styling (responsive, works on phones)
 js/engine.js      game rules + AI (no DOM, unit-tested)
 js/app.js         user interface
+js/themes.js      theme names, labels and ship names
+js/personas.js    AI personalities and their lines
+js/sound.js       sound effects (Web Audio API)
+e2e/              browser tests (Playwright)
 tests/            automated tests (Node's built-in test runner)
 BUGS.md           bugs found during testing and how they were fixed
 ```

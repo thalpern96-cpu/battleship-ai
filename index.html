@@ -8,10 +8,10 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-theme="classic">
   <header>
-    <h1>⚓ Battleship</h1>
-    <p class="subtitle">Sink the enemy fleet before the AI sinks yours.</p>
+    <h1 id="game-title">⚓ Battleship</h1>
+    <p id="game-subtitle" class="subtitle">Sink the enemy fleet before the AI sinks yours.</p>
   </header>
 
   <main>
@@ -23,6 +23,9 @@
           <option value="normal" selected>Normal</option>
           <option value="hard">Hard</option>
         </select>
+        <label for="theme">Theme</label>
+        <select id="theme"></select>
+        <button id="mute-btn" type="button" aria-pressed="false" title="Sound on/off">🔊 Sound on</button>
         <span id="stats" class="stats" aria-live="polite"></span>
       </div>
       <div id="placement-controls" class="control-row">
@@ -33,18 +36,29 @@
       </div>
       <div id="battle-controls" class="control-row hidden">
         <button id="restart-btn" type="button">New game</button>
+        <button id="move-btn" type="button" title="Once per game: move one undamaged ship. Uses your turn.">🚢 Move a ship (1 left)</button>
+        <button id="move-rotate-btn" type="button" class="hidden">Rotate (R)</button>
+        <button id="cancel-move-btn" type="button" class="hidden">Cancel move</button>
       </div>
       <p id="status" class="status" role="status" aria-live="polite"></p>
     </section>
 
-    <section class="boards">
+    <section id="persona" class="persona" aria-live="polite">
+      <div id="persona-avatar" class="persona-avatar" aria-hidden="true">🧔</div>
+      <div class="persona-body">
+        <div class="persona-name"><span id="persona-name"></span> <span id="persona-mood" class="persona-mood"></span></div>
+        <div id="persona-bubble" class="bubble"></div>
+      </div>
+    </section>
+
+    <section id="boards" class="boards">
       <div class="board-wrap">
-        <h2>Your fleet</h2>
+        <h2 id="player-board-title">Your fleet</h2>
         <div id="player-board" class="board" role="grid" aria-label="Your board"></div>
         <ul id="player-ships" class="ship-list"></ul>
       </div>
       <div class="board-wrap">
-        <h2>Enemy waters</h2>
+        <h2 id="enemy-board-title">Enemy waters</h2>
         <div id="enemy-board" class="board" role="grid" aria-label="Enemy board"></div>
         <ul id="enemy-ships" class="ship-list"></ul>
       </div>
@@ -60,16 +74,40 @@
     <div class="overlay-box">
       <h2 id="overlay-title"></h2>
       <p id="overlay-text"></p>
-      <button id="play-again-btn" type="button" class="primary">Play again</button>
-      <button id="close-overlay-btn" type="button">View boards</button>
+      <p id="overlay-quote" class="overlay-quote"></p>
+
+      <h3>Battle stats</h3>
+      <table id="end-stats" class="end-stats">
+        <thead><tr><th></th><th>You</th><th id="end-stats-ai">AI</th></tr></thead>
+        <tbody></tbody>
+      </table>
+
+      <h3>Ships sunk</h3>
+      <ol id="sink-timeline" class="sink-timeline"></ol>
+
+      <h3>Heat map</h3>
+      <div class="heat-tabs" role="tablist">
+        <button id="heat-ai-btn" type="button" role="tab" class="active" aria-selected="true">Where the AI fired</button>
+        <button id="heat-player-btn" type="button" role="tab" aria-selected="false">Where you fired</button>
+      </div>
+      <div id="heatmap" class="heatmap" aria-label="Heat map of shots"></div>
+      <div class="heat-legend"><span>earlier</span><span class="heat-gradient"></span><span>later</span><span class="heat-key">✕ hit · • miss · outlined = ship</span></div>
+
+      <div class="overlay-buttons">
+        <button id="play-again-btn" type="button" class="primary">Play again</button>
+        <button id="close-overlay-btn" type="button">View boards</button>
+      </div>
     </div>
   </div>
 
   <footer>
-    <p>How to play: place your 5 ships (click a ship in the list, then click your board; press R or the Rotate button to turn it). Then click squares in Enemy waters to fire. Red = hit, white dot = miss.</p>
+    <p>How to play: place your 5 ships (click a ship in the list, then click your board; press R or the Rotate button to turn it). Then click squares on the enemy board to fire. Red ✕ = hit, dot = miss. Once per game you can move one undamaged ship (it uses your turn).</p>
   </footer>
 
   <script src="js/engine.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/personas.js"></script>
+  <script src="js/sound.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
