@@ -1,0 +1,11 @@
+{
+  "name": "battleship-ai",
+  "version": "1.0.0",
+  "description": "Browser Battleship game against an AI opponent",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/",
+    "start": "python3 -m http.server 8000"
+  },
+  "license": "MIT"
+}

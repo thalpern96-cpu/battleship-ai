@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Battleship vs AI</title>
+  <meta name="description" content="Play the classic game of Battleship in your browser against a computer opponent.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>⚓ Battleship</h1>
+    <p class="subtitle">Sink the enemy fleet before the AI sinks yours.</p>
+  </header>
+
+  <main>
+    <section id="controls" class="panel">
+      <div class="control-row">
+        <label for="difficulty">AI difficulty</label>
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="normal" selected>Normal</option>
+          <option value="hard">Hard</option>
+        </select>
+        <span id="stats" class="stats" aria-live="polite"></span>
+      </div>
+      <div id="placement-controls" class="control-row">
+        <button id="rotate-btn" type="button">Rotate (R): <span id="orientation-label">Horizontal</span></button>
+        <button id="random-btn" type="button">Random placement</button>
+        <button id="clear-btn" type="button">Clear</button>
+        <button id="start-btn" type="button" class="primary" disabled>Start battle</button>
+      </div>
+      <div id="battle-controls" class="control-row hidden">
+        <button id="restart-btn" type="button">New game</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="boards">
+      <div class="board-wrap">
+        <h2>Your fleet</h2>
+        <div id="player-board" class="board" role="grid" aria-label="Your board"></div>
+        <ul id="player-ships" class="ship-list"></ul>
+      </div>
+      <div class="board-wrap">
+        <h2>Enemy waters</h2>
+        <div id="enemy-board" class="board" role="grid" aria-label="Enemy board"></div>
+        <ul id="enemy-ships" class="ship-list"></ul>
+      </div>
+    </section>
+
+    <section class="panel log-panel">
+      <h2>Battle log</h2>
+      <ol id="log" class="log" reversed></ol>
+    </section>
+  </main>
+
+  <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+    <div class="overlay-box">
+      <h2 id="overlay-title"></h2>
+      <p id="overlay-text"></p>
+      <button id="play-again-btn" type="button" class="primary">Play again</button>
+      <button id="close-overlay-btn" type="button">View boards</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>How to play: place your 5 ships (click a ship in the list, then click your board; press R or the Rotate button to turn it). Then click squares in Enemy waters to fire. Red = hit, white dot = miss.</p>
+  </footer>
+
+  <script src="js/engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
