@@ -63,6 +63,30 @@
     return ship;
   }
 
+  // A ship can be moved only if it has not been hit, and its new position
+  // may not cover any square that has already been fired at (otherwise the
+  // shooter's earlier "miss" information would become a lie).
+  function canMoveShip(board, shipId, row, col, horizontal) {
+    const ship = getShip(board, shipId);
+    if (!ship || ship.hits > 0) return false;
+    return shipCells(row, col, ship.size, horizontal).every(([r, c]) => {
+      if (!inBounds(r, c)) return false;
+      const cell = board.cells[r][c];
+      return !cell.shot && (cell.shipId === null || cell.shipId === shipId);
+    });
+  }
+
+  function moveShip(board, shipId, row, col, horizontal) {
+    if (!canMoveShip(board, shipId, row, col, horizontal)) return false;
+    const ship = getShip(board, shipId);
+    if (ship.row === row && ship.col === col && ship.horizontal === horizontal) return false;
+    ship.cells.forEach(([r, c]) => { board.cells[r][c].shipId = null; });
+    ship.cells = shipCells(row, col, ship.size, horizontal);
+    ship.cells.forEach(([r, c]) => { board.cells[r][c].shipId = shipId; });
+    Object.assign(ship, { row, col, horizontal });
+    return true;
+  }
+
   function getShip(board, shipId) {
     return board.ships.find((s) => s.id === shipId) || null;
   }
@@ -268,7 +292,7 @@
 
   const api = {
     SIZE, FLEET, inBounds, createBoard, shipCells, canPlace, placeShip,
-    removeShip, getShip, randomFleet, receiveShot, allSunk, isSunk, AI,
+    removeShip, getShip, canMoveShip, moveShip, randomFleet, receiveShot, allSunk, isSunk, AI,
   };
 
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
