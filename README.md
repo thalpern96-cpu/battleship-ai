@@ -41,5 +41,7 @@ No build step or dependencies: it's plain HTML, CSS and JavaScript.
 
 ```bash
 python3 -m http.server 8000   # then open http://localhost:8000
-npm test                      # runs the engine + AI tests (Node 18+)
+npm test                      # engine + AI tests (Node 18+)
+npm i --no-save playwright && npx playwright install chromium
+npm run test:e2e              # browser tests (needs the server above running)
 ```

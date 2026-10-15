@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "node --test tests/",
-    "start": "python3 -m http.server 8000"
+    "start": "python3 -m http.server 8000",
+    "test:e2e": "node e2e/ui-check.js"
   },
   "license": "MIT"
 }
