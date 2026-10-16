@@ -358,18 +358,23 @@ body::after {
 }
 h1, .board-wrap h2, .subtitle { text-shadow: 0 2px 6px rgba(0, 0, 0, .55); }
 
-/* Classic: deep ocean, light rays from the surface, rolling waves */
+/* Classic Navy: daytime sky, clouds, gulls, a grey warship on the horizon, rolling waves */
 body[data-theme="classic"]::before {
   background:
-    repeating-linear-gradient(105deg, rgba(180, 220, 255, .045) 0 46px, transparent 46px 140px),
-    radial-gradient(ellipse 80% 45% at 50% 0%, rgba(80, 160, 230, .35), transparent 70%),
-    linear-gradient(#123f6b 0%, #0b2a4a 40%, #061527 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='120'%3E%3Cg fill='%2333414f'%3E%3Cpath d='M0 88 L22 108 H296 L320 88Z'/%3E%3Crect x='70' y='70' width='170' height='18'/%3E%3Crect x='110' y='50' width='90' height='20'/%3E%3Crect x='135' y='30' width='34' height='20'/%3E%3Crect x='150' y='4' width='4' height='26'/%3E%3Crect x='138' y='14' width='28' height='3'/%3E%3Cpath d='M205 50 h22 l-4 20 h-14Z'/%3E%3Crect x='36' y='78' width='30' height='10' rx='3'/%3E%3Crect x='12' y='80' width='26' height='3'/%3E%3Crect x='248' y='78' width='30' height='10' rx='3'/%3E%3Crect x='276' y='80' width='26' height='3'/%3E%3C/g%3E%3Crect x='0' y='104' width='320' height='4' fill='%23ffffff' fill-opacity='.35'/%3E%3C/svg%3E") no-repeat right 4% top calc(46vh - 104px) / 320px 120px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='70'%3E%3Cg fill='none' stroke='%23f4f8fc' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 30 Q22 18 32 30 Q42 18 54 30'/%3E%3Cpath d='M80 12 Q89 3 97 12 Q105 3 114 12'/%3E%3Cpath d='M110 52 Q118 44 125 52 Q132 44 140 52'/%3E%3C/g%3E%3C/svg%3E") no-repeat left 7% top 12% / 160px 70px,
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .07) 0 2px, transparent 2px 18px) 0 100% / 100% 54% no-repeat,
+    radial-gradient(ellipse 160px 40px at 14% 20%, rgba(255, 255, 255, .85), transparent 70%),
+    radial-gradient(ellipse 110px 32px at 20% 17%, rgba(255, 255, 255, .8), transparent 70%),
+    radial-gradient(ellipse 200px 46px at 84% 14%, rgba(255, 255, 255, .75), transparent 70%),
+    radial-gradient(ellipse 130px 34px at 90% 10%, rgba(255, 255, 255, .7), transparent 70%),
+    linear-gradient(#24578c 0%, #4f8fc8 26%, #9fcdee 45.8%, #2a6aa3 46%, #174a7c 62%, #0b2c52 82%, #061a33 100%);
 }
 body[data-theme="classic"]::after {
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='140'%3E%3Cpath d='M0 70 Q150 30 300 70 T600 70 T900 70 T1200 70 V140 H0Z' fill='%231e5a8a' fill-opacity='.35'/%3E%3C/svg%3E") repeat-x,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='110'%3E%3Cpath d='M0 55 Q100 20 200 55 T400 55 T600 55 T800 55 V110 H0Z' fill='%23123f6b' fill-opacity='.55'/%3E%3C/svg%3E") repeat-x;
-  background-size: 1200px 140px, 800px 110px;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='160'%3E%3Cpath d='M0 70 Q150 30 300 70 T600 70 T900 70 T1200 70 V160 H0Z' fill='%231a5288' fill-opacity='.8'/%3E%3Cpath d='M0 70 Q150 30 300 70 T600 70 T900 70 T1200 70' fill='none' stroke='%23ffffff' stroke-opacity='.55' stroke-width='4'/%3E%3C/svg%3E") repeat-x,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='120'%3E%3Cpath d='M0 55 Q100 20 200 55 T400 55 T600 55 T800 55 V120 H0Z' fill='%230d3561'/%3E%3Cpath d='M0 55 Q100 20 200 55 T400 55 T600 55 T800 55' fill='none' stroke='%23dff0ff' stroke-opacity='.7' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
+  background-size: 1200px 160px, 800px 120px;
   background-position: 0 100%, 0 100%;
   animation: waves 40s linear infinite;
 }
