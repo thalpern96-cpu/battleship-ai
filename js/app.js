@@ -168,7 +168,16 @@
   // ---------- AI persona ----------
   function renderPersona() {
     const p = state.persona;
-    els.personaAvatar.textContent = p.avatar;
+    els.personaAvatar.textContent = '';
+    if (p.photo) {
+      const img = document.createElement('img');
+      img.src = p.photo;
+      img.alt = '';
+      img.onerror = () => { els.personaAvatar.textContent = p.initials; };
+      els.personaAvatar.appendChild(img);
+    } else {
+      els.personaAvatar.textContent = p.initials;
+    }
     els.personaName.textContent = p.name;
     els.personaMood.textContent = `(${p.mood})`;
     els.endStatsAi.textContent = p.name;
@@ -482,7 +491,7 @@
     els.overlayText.textContent = playerWon
       ? `You sank the enemy fleet in ${state.turn} turns.`
       : `${state.persona.name} sank your fleet in ${state.turn} turns. The enemy's remaining ships are now revealed.`;
-    els.overlayQuote.textContent = `${state.persona.avatar} ${state.persona.name}: “${state.lastLine}”`;
+    els.overlayQuote.textContent = `${state.persona.name}: “${state.lastLine}”`;
 
     const rows = [
       ['Shots fired', you.shots, ai.shots],

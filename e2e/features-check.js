@@ -15,12 +15,17 @@ const waitTurn = (page) => page.waitForFunction(() =>
   await page.goto(URL);
 
   // Personas
-  check((await page.textContent('#persona-name')) === 'Captain Brine', 'normal difficulty persona is Captain Brine');
+  check((await page.textContent('#persona-name')) === 'Austin Mead', 'normal difficulty persona is Austin Mead');
   check((await page.textContent('#persona-bubble')).length > 5, 'persona greets the player');
   await page.selectOption('#difficulty', 'hard');
-  check((await page.textContent('#persona-name')) === 'Admiral Vex', 'hard difficulty persona is Admiral Vex');
+  check((await page.textContent('#persona-name')) === 'Chris Degnan', 'hard difficulty persona is Chris Degnan');
   await page.selectOption('#difficulty', 'easy');
-  check((await page.textContent('#persona-name')) === 'Ensign Pip', 'easy difficulty persona is Ensign Pip');
+  check((await page.textContent('#persona-name')) === 'Arif Shenoy', 'easy difficulty persona is Arif Shenoy');
+  for (const d of ['easy', 'normal', 'hard']) {
+    await page.selectOption('#difficulty', d);
+    await page.waitForFunction(() => { const i = document.querySelector('#persona-avatar img'); return i && i.complete; });
+    check(await page.$eval('#persona-avatar img', (i) => i.naturalWidth > 0), `${d} persona photo loads`);
+  }
   await page.selectOption('#difficulty', 'normal');
 
   // Themes
