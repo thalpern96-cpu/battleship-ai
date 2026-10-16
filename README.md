@@ -17,7 +17,7 @@ The classic game of Battleship, played in the browser against a computer opponen
 ## Extras
 
 - **Themes:** pick Classic, Pirate, Space (asteroids and starships) or Submarine Sonar. Each has its own colours, board names and ship names. Your choice is remembered.
-- **AI personalities:** each difficulty has its own commentator. Easy is *Ensign Pip* (a nervous rookie), Normal is *Captain Brine* (a sporting sea captain) and Hard is *Admiral Vex* (a smug admiral).
+- **AI personalities:** each difficulty has its own commentator. Easy is *Arif Shenoy* (cheerful and encouraging), Normal is *Austin Mead* (a good sport) and Hard is *Chris Degnan* (a confident champion). Profile photos go in `img/personas/` and are set with each persona's `photo` field in `js/personas.js`; without one, initials are shown.
 - **Sound and animation:** a splash for a miss, an explosion and screen shake for a hit, and a sinking animation when a ship goes down. Sounds are generated in the browser (no audio files). Use **Sound on/off** to mute. Animations are reduced if your device asks for reduced motion.
 - **Movable fleet:** once per game, during the battle, click **Move a ship**, pick one of your ships that hasn't been hit, then click its new spot (press **R** to rotate, **Esc** to cancel). Moving uses up your turn, and the new spot can't include a square the AI has already fired at.
 - **End-of-game stats:** shots, hits, accuracy, longest hit streak, ships sunk, the turn each ship sank, and a heat map of where the AI fired (or where you fired).
