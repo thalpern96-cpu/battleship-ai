@@ -7,7 +7,7 @@
     easy: {
       name: 'Arif Shenoy',
       initials: 'AS',
-      photo: null,
+      photo: 'img/personas/arif-shenoy.jpg',
       mood: 'cheerful and encouraging',
       lines: {
         start: ['Welcome aboard! Let\'s have some fun out here.', 'Great to have you on the water today. Fire when ready!', 'Friendly match? Friendly match. Let\'s go!'],
@@ -25,7 +25,7 @@
     normal: {
       name: 'Austin Mead',
       initials: 'AM',
-      photo: null,
+      photo: 'img/personas/austin-mead.jpg',
       mood: 'a good sport',
       lines: {
         start: ['May the best captain win!', 'Battle stations! Let\'s have a proper match.', 'Good luck out there. You\'ll need it… just kidding. Mostly.'],
@@ -43,7 +43,7 @@
     hard: {
       name: 'Chris Degnan',
       initials: 'CD',
-      photo: null,
+      photo: 'img/personas/chris-degnan.jpg',
       mood: 'confident champion',
       lines: {
         start: ['I\'ve mapped every square already. Let\'s see what you\'ve got.', 'Bring your best game. I always do.', 'Champions don\'t guess. Let\'s begin.'],
