@@ -378,6 +378,18 @@ body[data-theme="classic"]::after {
   background-position: 0 100%, 0 100%;
   animation: waves 40s linear infinite;
 }
+@media (max-width: 600px) {
+  body[data-theme="classic"]::before {
+    background:
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, .07) 0 2px, transparent 2px 18px) 0 100% / 100% 54% no-repeat,
+      radial-gradient(ellipse 160px 40px at 14% 20%, rgba(255, 255, 255, .85), transparent 70%),
+      radial-gradient(ellipse 110px 32px at 20% 17%, rgba(255, 255, 255, .8), transparent 70%),
+      radial-gradient(ellipse 200px 46px at 84% 14%, rgba(255, 255, 255, .75), transparent 70%),
+      radial-gradient(ellipse 130px 34px at 90% 10%, rgba(255, 255, 255, .7), transparent 70%),
+      linear-gradient(#24578c 0%, #4f8fc8 26%, #9fcdee 45.8%, #2a6aa3 46%, #174a7c 62%, #0b2c52 82%, #061a33 100%);
+  }
+}
+
 @keyframes waves {
   to { background-position: 1200px 100%, -800px 100%; }
 }
